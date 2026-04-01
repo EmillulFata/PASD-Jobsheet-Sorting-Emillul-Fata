@@ -1,21 +1,36 @@
 package prakt5;
 
+import java.util.Scanner;
+
 public class MahasiswaMain07 {
   public static void main(String[] args) {
 
-    MahasiswaBerprestasi07 list = new MahasiswaBerprestasi07();
+    Scanner sc = new Scanner(System.in);
+    
+    System.out.print("Masukkan jumlah mahasiswa: ");
+    int jumlah = sc.nextInt();
+    sc.nextLine();
+    MahasiswaBerprestasi07 list = new MahasiswaBerprestasi07(jumlah);
 
-    Mahasiswa07 m1 = new Mahasiswa07("123", "Zidan", "2A", 3.2);
-    Mahasiswa07 m2 = new Mahasiswa07("124", "Ayu", "2A", 3.5);
-    Mahasiswa07 m3 = new Mahasiswa07("125", "Sofi", "2A", 3.1);
-    Mahasiswa07 m4 = new Mahasiswa07("126", "Sita", "2A", 3.9);
-    Mahasiswa07 m5 = new Mahasiswa07("127", "Miki", "2A", 3.7);
+    for (int i = 0; i < jumlah; i++) {
+      System.out.println("Data mahasiswa ke-" + (i + 1));
 
-    list.tambah(m1);
-    list.tambah(m2);
-    list.tambah(m3);
-    list.tambah(m4);
-    list.tambah(m5);
+      System.out.print("NIM   : ");
+      String nim = sc.nextLine();
+
+      System.out.print("Nama  : ");
+      String nama = sc.nextLine();
+
+      System.out.print("Kelas : ");
+      String kelas = sc.nextLine();
+
+      System.out.print("IPK   : ");
+      String ipkStr = sc.nextLine().replace(",", ".");
+      double ipk = Double.parseDouble(ipkStr);
+
+      Mahasiswa07 m = new Mahasiswa07(nim, nama, kelas, ipk);
+      list.tambah(m);
+    }
 
     System.out.println("Data sebelum sorting:");
     list.tampil();

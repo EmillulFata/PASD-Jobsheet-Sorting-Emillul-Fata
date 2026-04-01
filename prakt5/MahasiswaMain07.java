@@ -43,7 +43,7 @@ public class MahasiswaMain07 {
     list.selectionSort();
     list.tampil();
 
-    System.out.println("Data setelah sorting Insertion Sort:");
+    System.out.println("Data setelah sorting Insertion Sort: (Terbesar Dahulu)");
     list.insertionSort();
     list.tampil();
   }

@@ -61,4 +61,51 @@ public class MahasiswaBerprestasi07 {
       listMhs[j] = temp;
     }
   }
+  //Sequential Search
+   int sequentialSearch(double cari) {
+    int posisi = -1;
+
+    for (int i = 0; i < idx; i++) {
+      if (listMhs[i].ipk == cari) {
+        posisi = i;
+        break; // berhenti saat ketemu pertama
+      }
+    }
+    return posisi;
+  }
+
+  //Binary Search (HARUS data sudah di-sort ASC)
+  int binarySearch(double cari, int left, int right) {
+    if (right >= left) {
+      int mid = (left + right) / 2;
+
+      if (listMhs[mid].ipk == cari) {
+        return mid;
+      } else if (listMhs[mid].ipk > cari) {
+        return binarySearch(cari, left, mid - 1);
+      } else {
+        return binarySearch(cari, mid + 1, right);
+      }
+    }
+    return -1;
+  }
+
+  // ================= OUTPUT =================
+
+  void tampilPosisi(double x, int pos) {
+    if (pos != -1) {
+      System.out.println("Data dengan IPK " + x + " ditemukan pada index " + pos);
+    } else {
+      System.out.println("Data dengan IPK " + x + " tidak ditemukan");
+    }
+  }
+
+  void tampilDataSearch(double x, int pos) {
+    if (pos != -1) {
+      System.out.println("Data Mahasiswa:");
+      listMhs[pos].tampilInformasi();
+    } else {
+      System.out.println("Data tidak ditemukan");
+    }
+  }
 }

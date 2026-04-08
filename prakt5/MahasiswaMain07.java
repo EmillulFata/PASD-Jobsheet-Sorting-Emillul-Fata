@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class MahasiswaMain07 {
   public static void main(String[] args) {
-
     Scanner sc = new Scanner(System.in);
-    
+    int JumMhs = 5;
+
     System.out.print("Masukkan jumlah mahasiswa: ");
     int jumlah = sc.nextInt();
     sc.nextLine();
@@ -32,19 +32,39 @@ public class MahasiswaMain07 {
       list.tambah(m);
     }
 
-    System.out.println("Data sebelum sorting:");
+    // ================= TAMPIL AWAL =================
+    System.out.println("\nData sebelum sorting:");
     list.tampil();
 
-    System.out.println("Data setelah sorting Bubble Sort:");
+    // ================= SORTING =================
+    System.out.println("\nData setelah Bubble Sort (ASC):");
     list.bubbleSort();
     list.tampil();
 
-    System.out.println("Data setelah sorting Selection Sort:");
+    System.out.println("\nData setelah Selection Sort (ASC):");
     list.selectionSort();
     list.tampil();
 
-    System.out.println("Data setelah sorting Insertion Sort: (Terbesar Dahulu)");
+    System.out.println("\nData setelah Insertion Sort (DESC):");
     list.insertionSort();
     list.tampil();
+
+    // ================= SEARCHING =================
+    System.out.print("\nMasukkan IPK yang dicari: ");
+    double cari = sc.nextDouble();
+
+    //Sequential Search
+    System.out.println("\n=== Sequential Search ===");
+    int posSeq = list.sequentialSearch(cari);
+    list.tampilPosisi(cari, posSeq);
+    list.tampilDataSearch(cari, posSeq);
+
+    //Binary Search (HARUS ASC → pakai bubble sort lagi)
+    list.bubbleSort(); // pastikan urut ASC
+
+    System.out.println("\n=== Binary Search ===");
+    int posBin = list.binarySearch(cari, 0, list.idx - 1);
+    list.tampilPosisi(cari, posBin);
+    list.tampilDataSearch(cari, posBin);
   }
 }
